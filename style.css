@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+:root {
+    --primary-color: #3b82f6;
+    --bg-dark: #000000;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: var(--bg-dark);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 120rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(1.5rem);
+    -webkit-backdrop-filter: blur(1.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    border-radius: 5rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar ul li a {
+    font-size: 1.8rem; 
+    padding: 1rem 2.5rem;
+    font-weight: 500;
+    color: white;
+    border-radius: 2rem;
+    transition: 0.3s ease;
+}
+
+.navbar ul li a.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 1.5rem var(--primary-color);
+}
+
+/* ================= GENERAL SECTION ================= */
+section {
+    min-height: 100vh;
+    padding: 12rem 9% 6rem;
+}
+
+/* ================= HOME SECTION ================= */
+.home {
+    background: radial-gradient(circle at top right, #02045d, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+}
+
+.home-content h1 {
+    font-size: 7rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.home-content h1 span {
+    color: var(--primary-color);
+}
+
+.home-content h3 {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+    font-weight: 600;
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: #ccc;
+    max-width: 50rem;
+}
+
+.home-img img {
+    width: 30vw;
+    max-width: 38rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 2rem var(--primary-color);
+    transition: 0.4s ease;
+}
+
+.home-img img:hover {
+    transform: scale(1.02);
+}
+
+.social-icons {
+    margin: 2.5rem 0;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: 0.2rem solid var(--primary-color);
+    font-size: 2rem;
+    border-radius: 50%;
+    color: var(--primary-color);
+    margin-right: 1.5rem;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    color: black;
+    box-shadow: 0 0 2rem var(--primary-color);
+    transform: translateY(-0.5rem);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: transparent;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: black;
+    box-shadow: 0 0 2rem var(--primary-color);
+}
+
+/* ================= PROJECTS SECTION (4 CARDS GRID) ================= */
+.projects {
+    background: radial-gradient(circle at top right, #02045d, #000);
+}
+
+.projects h2 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.6rem;
+    text-align: center;
+    display: block;
+    margin-bottom: 4.5rem;
+    color: #bbb;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom simetris untuk 4 proyek */
+    gap: 3.5rem;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 2.2rem;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-1rem);
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1rem 3rem rgba(59, 130, 246, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 24rem; /* Tinggi gambar seragam untuk semua kartu */
+    object-fit: cover; /* Memastikan gambar tidak gepeng */
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.08);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-card h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.project-card p {
+    font-size: 1.5rem;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto; /* Menjaga posisi tags selalu rata di bagian bawah */
+}
+
+.kotakhtmlproject,
+.kotakcssproject,
+.kotakjsproject {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(167, 139, 250, 0.2));
+    border: 0.1rem solid rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+
+.project-card:hover .kotakhtmlproject,
+.project-card:hover .kotakcssproject,
+.project-card:hover .kotakjsproject {
+    border-color: rgba(59, 130, 246, 0.5);
+    color: #ffffff;
+}
+
+/* ================= ABOUT SECTION ================= */
+.about {
+    background: radial-gradient(circle at top right, #02045d, #000);
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4.5rem;
+    border-radius: 3rem;
+    max-width: 120rem;
+    margin: 0 auto 4rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.about-text {
+    flex: 1;
+}
+
+#about h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-text p {
+    font-size: 2rem;
+    line-height: 2;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ================= TYPING & HIGHLIGHTS ================= */
+.auto-type {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.typed-cursor {
+    font-size: 3.5rem;
+    color: white;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.highlight-blue {
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+.highlight-purple {
+    color: #a78bfa;
+    font-weight: 600;
+}
+
+.highlight-green {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.highlight-pink {
+    color: #f472b6;
+    font-weight: 600;
+}
+
+.highlight-gradient,
+.highlightgradient {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* ================= SKILL BADGES IN ABOUT ================= */
+.kotakpython,
+.kotakhtml,
+.kotakcss,
+.kotakjs,
+.kotakc,
+.kotakcplus {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(167, 139, 250, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.2rem 1.2rem;
+    margin: 0.2rem 0.3rem;
+    border-radius: 2rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= SPOTIFY SECTION ================= */
+.spotify-wrapper {
+    margin: 3rem auto;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.spotify-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.spotify-title {
+    font-size: 4rem !important;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+    color: white;
+    display: block;
+    width: 100%;
+    text-transform: none;
+}
+
+.mobile-only-img {
+    display: none;
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (max-width: 995px) {
+    .about-card {
+        padding: 3.5rem;
+        border-radius: 3rem;
+        width: 100%;
+    }
+    .navbar { 
+        padding: 1.2rem 2rem; 
+    }
+    .home { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 4rem; 
+    }
+    .home-content h1 { 
+        font-size: 4.5rem; 
+    }
+    .home-img img { 
+        width: 60vw; 
+    }
+    .home-content p { 
+        margin: 0 auto; 
+    }
+}   
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* Jadi 1 kolom rapi di layar HP */
+    }
+    .spotify-grid {
+        grid-template-columns: 1fr;
+    }
+    .navbar ul li a {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem;
+    }
+}

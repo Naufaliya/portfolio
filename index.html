@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Naufaliya's Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 995px)" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo"> </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <!-- <li><a href="#about">About Me</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <div class="home-img">
+            <img src="ugm.jpeg" alt="Naufaliya Zahra" width="300">
+        </div>
+        <div class="home-content">
+            <h1>Hi, it's <span>Naufaliya</span></h1>
+            <h3 class="typing-text">I focus on <span class="auto-type"></span></h3>
+            <div class="home-img mobile-only-img">
+                <img src="ugm.jpeg" alt="Naufaliya Zahra" width="300">
+            </div>
+
+            <p>Electronics & Instrumentation undergraduate at UGM passionate about Instrumentation, IoT Systems, Embedded Engineering, and AI. I focus on building smart sensor systems and bridging physical hardware with intelligent software solutions.</p>
+            
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/naufaliya-zahra-683854272/" target="_blank" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                  
+                <a href="https://www.instagram.com/naufaliya.z/" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                  
+                <a href="https://github.com/naufaliya" target="_blank" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                  
+                <a href="mailto:zahranaufaliya@gmail.com" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <p class="section-subtitle">Learning through building.</p>
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="project1.jpeg" alt="Portfolio Website">
+                <div class="card-content">
+                    <h3>Portfolio Website</h3>
+                    <p>Responsive personal portfolio website showcasing engineering projects and technical skills.</p>
+                    <div class="tags">
+                        <span class="kotakhtmlproject">HTML</span>
+                        <span class="kotakcssproject">CSS</span>
+                        <span class="kotakjsproject">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="project2.jpeg" alt="Dough's Pantry">
+                <div class="card-content">
+                    <h3>Dough's Pantry</h3>
+                    <p>E-commerce-style landing page for a homemade cookie business.</p>
+                    <div class="tags">
+                        <span class="kotakhtmlproject">HTML</span>
+                        <span class="kotakcssproject">CSS</span>
+                        <span class="kotakjsproject">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="project3.jpeg" alt="Computer Vision Dataset">
+                <div class="card-content">
+                    <h3>Computer Vision Dataset</h3>
+                    <p>Image labeling and bounding box annotation using CVAT for Object Detection model training.</p>
+                    <div class="tags">
+                        <span class="kotakhtmlproject">CVAT</span>
+                        <span class="kotakcssproject">Data Annotation</span>
+                        <span class="kotakjsproject">Computer Vision</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: ARGUS -->
+            <div class="project-card">
+                <img src="project4.jpeg" alt="ARGUS IoT Monitoring System">
+                <div class="card-content">
+                    <h3>ARGUS — IoT Environment & Fire Monitor</h3>
+                    <p>ESP32-S3-based real-time monitoring system for gas, smoke, temperature, and flame detection with a built-in web dashboard and backup power.</p>
+                    <div class="tags">
+                        <span class="kotakhtmlproject">ESP32-S3</span>
+                        <span class="kotakcssproject">IoT & C++</span>
+                        <span class="kotakjsproject">Web Dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Veteran Business Day -->
+            <div class="project-card">
+                <img src="project5.jpeg" alt="Waste Management Business Model Canvas">
+                <div class="card-content">
+                    <h3>Smart Waste Management App (BMC)</h3>
+                    <p>Semifinalist at Veteran Business Day. Designed a multi-dashboard waste tracking, QR verification, and reward platform prototype.</p>
+                    <div class="tags">
+                        <span class="kotakhtmlproject">Business Model</span>
+                        <span class="kotakcssproject">UI/UX Prototype</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    <section id="about" class="about">
+        <div class="about-card">
+            <div class="about-text">
+                <h2>Naufaliya Zahra'</h2>
+                <p>Hi! You can call me Al or Ali, currently navigating my way through 
+                <strong>Electronics and Instrumentation at UGM</strong>. I'm deeply curious about 
+                <span class="highlight-gradient">Machine Learning, Artificial Intelligence, and Internet of Things.</span> 
+                The future of tech is where I want to be.</p>
+                    
+                <p>I'm building my technical skills in 
+                <span class="kotakpython">Python</span>
+                <span class="kotakhtml">HTML</span>
+                <span class="kotakcss">CSS</span>
+                <span class="kotakjs">JavaScript</span>
+                <span class="kotakc">C</span>
+                    and 
+                <span class="kotakcplus">C++ </span> 
+                with a current focus on <span class="highlight-gradient">UI/UX Design and Web Development.</span> I value clean and minimalist design, less is definitely more.</p>
+                    
+                <p>When I'm not coding, I'm probably vibing to 2016 era hits, think 
+                The Chainsmokers or Justin Bieber. 
+                I've literally never skipped a day on 
+                Pinterest. It's my go-to for everything from fresh design inspo to random deep-dive articles.</p>
+            </div>
+        </div>
+           
+        <div class="spotify-wrapper">
+            <h2 class="spotify-title">Favorite Songs</h2>
+            <div class="spotify-grid">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3TgMcrV32NUKjEG2ujn9eh?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2OzhQlSqBEmt7hmkYxfT6m?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0n8ob8S72lvznoVfiwz4qL?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4NBTZtAt1F13VvlSKe6KTl?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div> 
+        </div>
+    </section>
+    -->
+
+    <script>
+        const links = document.querySelectorAll('.navbar nav ul li a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        var typed = new Typed(".auto-type", {
+            strings: ["IoT Systems", "Embedded Engineering", "Artificial Intelligence", "Instrumentation"],
+            typeSpeed: 100,
+            backSpeed: 50,
+            loop: true
+        });
+    </script>
+
+    <script>
+        let sections = document.querySelectorAll("section");
+        let navLinksScroll = document.querySelectorAll("header nav ul li a");
+        window.onscroll = () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute("id");
+
+                if(top >= offset && top < offset + height) {
+                    navLinksScroll.forEach(links => {
+                        links.classList.remove("active");
+                        let targetLink = document.querySelector("header nav ul li a[href*=" + id + "]");
+                        if (targetLink) {
+                            targetLink.classList.add("active");
+                        }
+                    });
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
