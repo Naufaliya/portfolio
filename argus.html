@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUS — Project Detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 995px)" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Styling khusus halaman detail agar menyatu dengan tema utama */
+        .detail-section {
+            min-height: 100vh;
+            padding: 12rem 9% 6rem;
+            background: radial-gradient(circle at top right, #02045d, #000);
+        }
+        .detail-container {
+            max-width: 90rem;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(1.5rem);
+            -webkit-backdrop-filter: blur(1.5rem);
+            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            padding: 4rem;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            transition: 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateX(-0.5rem);
+        }
+        .detail-container h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .detail-banner {
+            width: 100%;
+            max-height: 45rem;
+            object-fit: cover;
+            border-radius: 1.8rem;
+            margin-bottom: 3rem;
+            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+        }
+        .detail-body h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .detail-body p, .detail-body li {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #d1d5db;
+            margin-bottom: 1.2rem;
+        }
+        .detail-body ul {
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        .detail-body ul li {
+            list-style: disc;
+        }
+        .detail-actions {
+            margin-top: 3.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+            .detail-container { padding: 2.5rem; }
+            .detail-container h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar sederhana -->
+    <header class="navbar">
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#projects" class="active">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="detail-section">
+        <div class="detail-container">
+            <a href="index.html#projects" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back to Projects
+            </a>
+
+            <!-- GANTI JUDUL PROJECT -->
+            <h1>ARGUS — IoT Environment & Fire Monitor</h1>
+
+            <!-- GANTI TAG TEKNOLOGI -->
+            <div class="detail-tags">
+                <span class="kotakhtmlproject">ESP32-S3</span>
+                <span class="kotakcssproject">IoT & C++</span>
+                <span class="kotakjsproject">Web Dashboard</span>
+            </div>
+
+            <!-- GANTI GAMBAR PROJECT -->
+            <img src="project4.jpeg" alt="ARGUS IoT Monitoring System" class="detail-banner">
+
+            <!-- GANTI DESKRIPSI LENGKAP -->
+            <div class="detail-body">
+                <h3>Overview</h3>
+                <p>ARGUS adalah sistem pemantauan lingkungan dan deteksi kebakaran berbasis mikrokontroler ESP32-S3 yang dirancang untuk memantau kondisi ruangan secara real-time.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Deteksi gas, asap, suhu, dan api secara real-time menggunakan integrasi multi-sensor.</li>
+                    <li>Dashboard web bawaan untuk memantau pembacaan sensor dari jarak jauh.</li>
+                    <li>Sistem daya cadangan (backup power) agar perangkat tetap aktif saat listrik padam.</li>
+                </ul>
+
+                <h3>Hardware & Architecture</h3>
+                <p>Jelaskan alur kerja sistem, komponen sensor yang dipakai, atau tantangan saat kalibrasi dan integrasi perangkat keras di bagian ini.</p>
+            </div>
+
+            <!-- TOMBOL LINK EKSTERNAL (OPSIONAL) -->
+            <div class="detail-actions">
+                <a href="https://github.com/naufaliya" target="_blank" class="btn">
+                    <i class="fa-brands fa-github"></i> View Repository
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

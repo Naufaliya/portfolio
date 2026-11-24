@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website — Project Detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 995px)" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .detail-section {
+            min-height: 100vh;
+            padding: 12rem 9% 6rem;
+            background: radial-gradient(circle at top right, #02045d, #000);
+        }
+        .detail-container {
+            max-width: 90rem;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(1.5rem);
+            -webkit-backdrop-filter: blur(1.5rem);
+            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            padding: 4rem;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            transition: 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateX(-0.5rem);
+        }
+        .detail-container h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .detail-banner {
+            width: 100%;
+            max-height: 45rem;
+            object-fit: cover;
+            border-radius: 1.8rem;
+            margin-bottom: 3rem;
+            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+        }
+        .detail-body h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .detail-body p, .detail-body li {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #d1d5db;
+            margin-bottom: 1.2rem;
+        }
+        .detail-body ul {
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        .detail-body ul li {
+            list-style: disc;
+        }
+        .detail-actions {
+            margin-top: 3.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+            .detail-container { padding: 2.5rem; }
+            .detail-container h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#projects" class="active">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="detail-section">
+        <div class="detail-container">
+            <a href="index.html#projects" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back to Projects
+            </a>
+
+            <h1>Portfolio Website</h1>
+
+            <div class="detail-tags">
+                <span class="kotakhtmlproject">HTML</span>
+                <span class="kotakcssproject">CSS</span>
+                <span class="kotakjsproject">JavaScript</span>
+            </div>
+
+            <img src="project1.jpeg" alt="Portfolio Website Preview" class="detail-banner">
+
+            <div class="detail-body">
+                <h3>Overview</h3>
+                <p>Website portofolio pribadi yang responsif untuk menampilkan proyek-proyek rekayasa di bidang Instrumentasi, Embedded Systems, IoT, dan Artificial Intelligence.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Desain antarmuka modern bertema gelap dengan efek <em>glassmorphism</em> dan animasi teks dinamis menggunakan Typed.js.</li>
+                    <li>Tata letak responsif yang menyesuaikan tampilan pada perangkat desktop maupun mobile.</li>
+                    <li>Navigasi interaktif dengan halaman detail khusus untuk setiap proyek.</li>
+                </ul>
+
+                <h3>Development & Deployment</h3>
+                <p>Dibangun dari awal menggunakan semantic HTML5, CSS Grid & Flexbox, serta JavaScript murni, lalu di-hosting menggunakan GitHub Pages.</p>
+            </div>
+
+            <div class="detail-actions">
+                <a href="https://github.com/Naufaliya/web" target="_blank" class="btn">
+                    <i class="fa-brands fa-github"></i> View Repository
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
