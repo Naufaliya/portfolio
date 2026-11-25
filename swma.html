@@ -48,14 +48,107 @@
             gap: 1rem;
             margin-bottom: 2.5rem;
         }
-        .detail-banner {
+
+        /* ================= SLIDER / CAROUSEL STYLING ================= */
+        .slider-wrapper {
+            position: relative;
             width: 100%;
-            max-height: 45rem;
-            object-fit: cover;
+            margin-bottom: 3.5rem;
             border-radius: 1.8rem;
-            margin-bottom: 3rem;
-            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.35);
+            border: 0.1rem solid rgba(255, 255, 255, 0.12);
         }
+        .slider-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+        }
+        .slider-track::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+        }
+        .slide-item {
+            flex: 0 0 100%;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-item img {
+            width: 100%;
+            height: 45rem;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-caption {
+            padding: 1.8rem 2.5rem;
+            background: rgba(15, 23, 42, 0.85);
+            border-top: 0.1rem solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+        .slide-caption h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .slide-caption p {
+            font-size: 1.45rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 22.5rem; /* Setengah dari tinggi gambar 45rem */
+            transform: translateY(-50%);
+            width: 4.2rem;
+            height: 4.2rem;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            border: 0.1rem solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+            z-index: 10;
+        }
+        .slider-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 1.5rem var(--primary-color);
+        }
+        .prev-btn { left: 1.5rem; }
+        .next-btn { right: 1.5rem; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1.2rem 0;
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .dot {
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .dot.active {
+            background: var(--primary-color);
+            width: 2.4rem;
+            border-radius: 1rem;
+        }
+        /* ============================================================= */
+
         .detail-body h3 {
             font-size: 2.2rem;
             color: var(--primary-color);
@@ -84,6 +177,8 @@
         @media (max-width: 768px) {
             .detail-container { padding: 2.5rem; }
             .detail-container h1 { font-size: 2.8rem; }
+            .slide-item img { height: 28rem; }
+            .slider-btn { top: 14rem; width: 3.5rem; height: 3.5rem; }
         }
     </style>
 </head>
@@ -111,21 +206,74 @@
                 <span class="kotakcssproject">UI/UX Prototype</span>
             </div>
 
-            <img src="project5.jpeg" alt="Waste Management Business Model Canvas" class="detail-banner">
+            <!-- SWIPEABLE IMAGE SLIDER -->
+            <div class="slider-wrapper">
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous Slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1)" aria-label="Next Slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 -->
+                    <div class="slide-item">
+                        <img src="bmcdetail.jpeg" alt="Prototype Overview">
+                        <div class="slide-caption">
+                            <h4>Business Model Canvas (BMC)</h4>
+                            <p>End-to-end business architecture mapping key partners, customer segments, cost structure, and revenue streams under the T-V-R-R-C value proposition.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 (Ganti src dengan nama file foto keduamu) -->
+                    <div class="slide-item">
+                        <img src="project5.jpeg" alt="QR Verification System">
+                        <div class="slide-caption">
+                            <h4>Mobile App Prototype</h4>
+                            <p>User flow covering environmental impact stats, pickup scheduling with map integration, waste category & weight estimation, QR verification, and reward summary.</p>
+                        </div>
+                    </div>
+
+                <!-- Indikator Titik (Dots) -->
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
 
             <div class="detail-body">
-                <h3>Overview</h3>
-                <p>Proyek inovasi pengelolaan sampah pintar yang berhasil lolos sebagai <strong>Semifinalist di Veteran Business Day</strong>. Menggabungkan model bisnis berkelanjutan (Business Model Canvas) dengan prototipe aplikasi berbasis pelacakan sampah dan insentif pengguna.</p>
+                <h3>About The Project</h3>
+                <p>Urban waste management often suffers from fragmented logistics, lack of transparency in waste sorting, and low public participation due to the absence of direct incentives. Developed by <strong>Team Absolute Cinema (Universitas Gadjah Mada)</strong>, this Smart Waste Management App concept and Business Model Canvas were designed to bridge that gap—earning <strong>Semifinalist recognition at Veteran Business Day</strong>.</p>
+                <p>The platform connects everyday households, waste collectors, local waste banks, and recycling industries into a single, verifiable digital ecosystem that turns household waste into measurable environmental and economic value.</p>
 
-                <h3>Key Features & Prototype</h3>
+                <h3>Goals</h3>
                 <ul>
-                    <li><strong>Multi-Dashboard System:</strong> Antarmuka terpisah untuk pengguna rumah tangga, petugas pengumpul, dan pengelola bank sampah.</li>
-                    <li><strong>QR Verification:</strong> Sistem pemindaian kode QR untuk memvalidasi penyetoran dan pemilahan sampah secara akurat.</li>
-                    <li><strong>Reward Platform:</strong> Konversi poin dari setoran sampah menjadi saldo atau insentif mitra untuk meningkatkan partisipasi masyarakat.</li>
+                    <li>Simplifying household waste sorting and pickup scheduling through an intuitive mobile experience.</li>
+                    <li>Ensuring transparent, real-time verification of waste types and weights using QR codes and digital scales.</li>
+                    <li>Increasing community participation by converting verified waste deposits into tangible rewards and environmental impact metrics.</li>
+                    <li>Creating a sustainable multi-stakeholder business model that aligns economic incentives across citizens, waste banks, and recycling partners.</li>
                 </ul>
 
-                <h3>Business & Product Strategy</h3>
-                <p>Merancang alur nilai (<em>value proposition</em>), segmen pengguna, serta prototipe interaktif untuk membuktikan kelayakan teknis dan bisnis dari solusi pengelolaan limbah modern.</p>
+                <h3>The User & Audience</h3>
+                <p>The ecosystem is designed around two primary user groups with distinct operational needs:</p>
+                <ul>
+                    <li><strong>Urban Households (Ages 19–65):</strong> Environmentally conscious residents in densely populated areas who need a convenient, transparent way to schedule waste pickups and track their personal environmental impact.</li>
+                    <li><strong>Waste Management Stakeholders:</strong> Field waste collectors, local waste banks (<em>Bank Sampah</em>), recycling factories, and municipal environmental agencies (<em>Dinas Lingkungan Hidup</em>) requiring structured supply routing and verified transaction logs.</li>
+                </ul>
+
+                <h3>System & Business Scope</h3>
+                <ul>
+                    <li><strong>End-to-End Waste Tracking (Track):</strong> Users categorize waste (plastic, paper, glass, metal, organic), estimate weight, and pin pickup locations with live status updates.</li>
+                    <li><strong>On-Site Digital Verification (Verify):</strong> Field collectors scan user-generated QR codes and log digital scale readings to prevent data manipulation and ensure accurate sorting.</li>
+                    <li><strong>Smart Supply Routing (Route):</strong> Automated distribution logic directs sorted materials to the nearest partnered waste bank or specialized recycling facility.</li>
+                    <li><strong>Gamified Incentive Engine (Reward):</strong> Verified deposits automatically credit user points that can be redeemed for daily vouchers, e-wallet balances, or partner discounts alongside CO<sub>2</sub> reduction stats.</li>
+                    <li><strong>Multi-Dashboard Architecture (Connect):</strong> Dedicated interfaces tailored for citizens, logistics drivers, and waste bank administrators, supported by B2G contracts, transaction commissions, and data insights.</li>
+                </ul>
+
+                <h3>Process</h3>
+                <ul>
+                    <li><strong>Problem & Stakeholder Analysis:</strong> Identified bottlenecks in conventional waste collection—specifically the disconnect between household sorting efforts and downstream recycling facilities.</li>
+                    <li><strong>Business Model Architecture:</strong> Structured the 9-block Business Model Canvas (BMC) defining value propositions (T-V-R-R-C), key partnerships with local government and recyclers, cost structures (CAPEX/OPEX), and multi-stream monetization.</li>
+                    <li><strong>User Flow & UI/UX Prototyping:</strong> Designed high-fidelity mobile interfaces covering the complete user journey—from home impact dashboards and map-based pickup scheduling to QR code confirmation receipts.</li>
+                    <li><strong>Pitching & Validation:</strong> Evaluated against business viability and social impact criteria, advancing to the Semifinal stage at Veteran Business Day.</li>
+                </ul>
             </div>
 
             <div class="detail-actions">
@@ -135,5 +283,47 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slide-item');
+        const dotsContainer = document.getElementById('sliderDots');
+
+        // Buat titik indikator otomatis sesuai jumlah slide
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            const slideWidth = track.clientWidth;
+            track.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+        }
+
+        function moveSlide(direction) {
+            const slideWidth = track.clientWidth;
+            const currentIndex = Math.round(track.scrollLeft / slideWidth);
+            let nextIndex = currentIndex + direction;
+
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+
+            goToSlide(nextIndex);
+        }
+
+        // Update titik aktif saat user melakukan swipe manual
+        track.addEventListener('scroll', () => {
+            const slideWidth = track.clientWidth;
+            const activeIndex = Math.round(track.scrollLeft / slideWidth);
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        });
+    </script>
 </body>
 </html>

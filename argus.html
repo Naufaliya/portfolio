@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARGUS — Project Detail</title>
+    <title>ARGUS — IoT Environment & Fire Monitor</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mobile.css" media="(max-width: 995px)" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Styling khusus halaman detail agar menyatu dengan tema utama */
         .detail-section {
             min-height: 100vh;
             padding: 12rem 9% 6rem;
@@ -40,7 +39,15 @@
         .detail-container h1 {
             font-size: 3.6rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .detail-meta {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+        .detail-meta strong {
             color: #ffffff;
         }
         .detail-tags {
@@ -49,14 +56,106 @@
             gap: 1rem;
             margin-bottom: 2.5rem;
         }
-        .detail-banner {
+
+        /* ================= SLIDER / CAROUSEL STYLING ================= */
+        .slider-wrapper {
+            position: relative;
             width: 100%;
-            max-height: 45rem;
-            object-fit: cover;
+            margin-bottom: 3.5rem;
             border-radius: 1.8rem;
-            margin-bottom: 3rem;
-            border: 0.1rem solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.35);
+            border: 0.1rem solid rgba(255, 255, 255, 0.12);
         }
+        .slider-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .slider-track::-webkit-scrollbar {
+            display: none;
+        }
+        .slide-item {
+            flex: 0 0 100%;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-item img {
+            width: 100%;
+            height: 45rem;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-caption {
+            padding: 1.8rem 2.5rem;
+            background: rgba(15, 23, 42, 0.85);
+            border-top: 0.1rem solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+        .slide-caption h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .slide-caption p {
+            font-size: 1.45rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 22.5rem;
+            transform: translateY(-50%);
+            width: 4.2rem;
+            height: 4.2rem;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            border: 0.1rem solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+            z-index: 10;
+        }
+        .slider-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 1.5rem var(--primary-color);
+        }
+        .prev-btn { left: 1.5rem; }
+        .next-btn { right: 1.5rem; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1.2rem 0;
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .dot {
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .dot.active {
+            background: var(--primary-color);
+            width: 2.4rem;
+            border-radius: 1rem;
+        }
+
         .detail-body h3 {
             font-size: 2.2rem;
             color: var(--primary-color);
@@ -85,11 +184,12 @@
         @media (max-width: 768px) {
             .detail-container { padding: 2.5rem; }
             .detail-container h1 { font-size: 2.8rem; }
+            .slide-item img { height: 28rem; }
+            .slider-btn { top: 14rem; width: 3.5rem; height: 3.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar sederhana -->
     <header class="navbar">
         <div class="logo"></div>
         <nav>
@@ -106,42 +206,141 @@
                 <i class="fa-solid fa-arrow-left"></i> Back to Projects
             </a>
 
-            <!-- GANTI JUDUL PROJECT -->
-            <h1>ARGUS — IoT Environment & Fire Monitor</h1>
+            <h1>ARGUS Air &amp; Radiant-temperature Guard Using Sensors</h1>
+        
 
-            <!-- GANTI TAG TEKNOLOGI -->
             <div class="detail-tags">
                 <span class="kotakhtmlproject">ESP32-S3</span>
-                <span class="kotakcssproject">IoT & C++</span>
-                <span class="kotakjsproject">Web Dashboard</span>
+                <span class="kotakcssproject">IoT &amp; C++</span>
+                <span class="kotakjsproject">Embedded Web Dashboard</span>
+                <span class="kotakhtmlproject">Multi-Sensor</span>
             </div>
 
-            <!-- GANTI GAMBAR PROJECT -->
-            <img src="project4.jpeg" alt="ARGUS IoT Monitoring System" class="detail-banner">
+            <!-- SWIPEABLE IMAGE SLIDER -->
+            <div class="slider-wrapper">
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous Slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1)" aria-label="Next Slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
 
-            <!-- GANTI DESKRIPSI LENGKAP -->
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1: Foto Hardware -->
+                    <div class="slide-item">
+                        <img src="argusphoto1.jpeg" alt="ARGUS Hardware Prototype">
+                        <div class="slide-caption">
+                            <h4>1. Hardware Assembly &amp; Power Circuitry</h4>
+                            <p>ESP32-S3 microcontroller integrated with DHT22 temperature/humidity sensor, MQ-2 gas sensor, infrared flame detector, buzzer, and a 3.7V 18650 Li-Ion backup battery circuit.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Foto Kode Program Firmware -->
+                    <div class="slide-item">
+                        <img src="argusphoto2.jpeg" alt="ARGUS ESP32 Firmware Code">
+                        <div class="slide-caption">
+                            <h4>2. Embedded C++ Firmware &amp; Alarm Logic</h4>
+                            <p>Non-blocking sensor polling, multi-stage buzzer escalation logic, local Wi-Fi Access Point routing, and persistent threshold storage using ESP32 Non-Volatile Storage (NVS).</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Foto Web Dashboard -->
+                    <div class="slide-item">
+                        <img src="argusphoto3.jpeg" alt="ARGUS Embedded Web Dashboard">
+                        <div class="slide-caption">
+                            <h4>3. Embedded Web Dashboard &amp; Real-Time Telemetry</h4>
+                            <p>On-chip HTML/JS monitoring interface hosted at 192.168.4.1 featuring live 60-second temperature dot-matrix charts, humidity ring gauge, sensor health status, and threshold controls.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+
             <div class="detail-body">
-                <h3>Overview</h3>
-                <p>ARGUS adalah sistem pemantauan lingkungan dan deteksi kebakaran berbasis mikrokontroler ESP32-S3 yang dirancang untuk memantau kondisi ruangan secara real-time.</p>
+                <h3>About The Project</h3>
+                <p>Enclosed operational spaces, such as server rooms, laboratories, warehouses, and production floors, are vulnerable to unnoticed gas leaks, smoke accumulation, and abnormal temperature spikes. Manual inspections rely heavily on human presence, often causing critical delays in early hazard detection.</p>
+                <p>Developed by Kelompok ETA (Electronics &amp; Instrumentation, Universitas Gadjah Mada), ARGUS is an ESP32-S3-based IoT environmental and fire early-warning prototype. It continuously monitors ambient air, combustible gases, and infrared flame radiation while hosting a self-contained web dashboard over local Wi-Fi.</p>
 
-                <h3>Key Features</h3>
+                <h3>Goals</h3>
                 <ul>
-                    <li>Deteksi gas, asap, suhu, dan api secara real-time menggunakan integrasi multi-sensor.</li>
-                    <li>Dashboard web bawaan untuk memantau pembacaan sensor dari jarak jauh.</li>
-                    <li>Sistem daya cadangan (backup power) agar perangkat tetap aktif saat listrik padam.</li>
+                    <li>Providing continuous, automated monitoring of ambient temperature, relative humidity, combustible gas/smoke, and infrared flame presence.</li>
+                    <li>Delivering real-time telemetry and visual alerts via an embedded web dashboard without requiring external cloud dependencies.</li>
+                    <li>Ensuring uninterrupted operation during main AC power outages through an integrated Li-Ion backup power system.</li>
+                    <li>Allowing operators to customize and persist safety alarm thresholds directly on the microcontroller's non-volatile memory.</li>
                 </ul>
 
-                <h3>Hardware & Architecture</h3>
-                <p>Jelaskan alur kerja sistem, komponen sensor yang dipakai, atau tantangan saat kalibrasi dan integrasi perangkat keras di bagian ini.</p>
+                <h3>The User &amp; Audience</h3>
+                <p>The system is engineered for facility operators and technical personnel responsible for critical indoor infrastructure:</p>
+                <ul>
+                    <li><strong>Facility &amp; Laboratory Operators:</strong> Technicians monitoring server racks, chemical storage rooms, or laboratory equipment who need immediate visual and acoustic warnings upon environmental anomalies.</li>
+                    <li><strong>Embedded &amp; Instrumentation Engineers:</strong> Developers requiring reliable multi-sensor acquisition, sensor fault diagnostics, and local JSON API telemetry for rapid edge deployment.</li>
+                </ul>
+
+                <h3>System &amp; Hardware Scope</h3>
+                <ul>
+                    <li><strong>Multi-Sensor Acquisition:</strong> Combines a <strong>DHT22</strong> digital sensor (GPIO 6) for temperature (&minus;40 to 80&deg;C) and humidity (0&ndash;99.9% RH), an <strong>MQ-2</strong> semiconductor sensor (GPIO 7 ADC with 20k&Omega;/10k&Omega; voltage divider) for LPG/smoke detection, and a digital <strong>Infrared Flame Sensor</strong> (GPIO 15).</li>
+                    <li><strong>Embedded Web Dashboard &amp; JSON API:</strong> Runs an on-chip HTTP web server and captive portal on ESP32-S3 (<code>192.168.4.1</code>) serving a responsive UI that polls <code>/api</code> every 2 seconds for live charts, heat index calculations, and sensor health status.</li>
+                    <li><strong>Multi-Stage Acoustic &amp; Visual Alarm:</strong> Drives a 1 kHz active buzzer (GPIO 13) and color-coded dashboard flashes—escalating from a 1-beep/sec warning to a 2-beep alert, and locking into a latched critical alarm after 10 seconds of sustained threshold breach.</li>
+                    <li><strong>Persistent Threshold Configuration:</strong> Uses ESP32 <code>Preferences</code> (NVS) so custom temperature, humidity, and MQ-2 millivolt thresholds configured via the web UI survive device restarts.</li>
+                    <li><strong>Uninterruptible Power Architecture:</strong> Powered by 220V AC via a 5V adapter backed by a 3.7V 18650 Li-Ion battery, TP4056 CC-CV charging module, and MT3608 5V boost converter with relay switching.</li>
+                </ul>
+
+                <h3>Process</h3>
+                <ul>
+                    <li><strong>Hardware &amp; Power Design:</strong> Mapped GPIO interfaces and designed a dual-source power rail with voltage division to safely step down the MQ-2's 5V analog output to the ESP32-S3's 3.3V ADC range.</li>
+                    <li><strong>Firmware &amp; Non-Blocking Control Logic:</strong> Programmed non-blocking sensor polling (2-second intervals), sensor fault validation (<code>SENSOR ONLINE</code> vs. <code>SENSOR ERROR</code>), and time-staged buzzer patterns in C++.</li>
+                    <li><strong>Frontend Dashboard Integration:</strong> Built a lightweight HTML/CSS/JS interface embedded in <code>PROGMEM</code> featuring a 60-second temperature dot matrix, humidity ring gauge, and real-time threshold form.</li>
+                    <li><strong>Testing &amp; Validation:</strong> Verified captive-portal Wi-Fi access, JSON API latency, threshold persistence across reboots, and sensor error handling under simulated fault conditions.</li>
+                </ul>
             </div>
 
-            <!-- TOMBOL LINK EKSTERNAL (OPSIONAL) -->
             <div class="detail-actions">
-                <a href="https://github.com/naufaliya" target="_blank" class="btn">
-                    <i class="fa-brands fa-github"></i> View Repository
+                <a href="https://github.com/Naufaliya" target="_blank" class="btn">
+                    <i class="fa-brands fa-github"></i> View GitHub Profile
                 </a>
             </div>
         </div>
     </section>
+
+    <script>
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slide-item');
+        const dotsContainer = document.getElementById('sliderDots');
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            const slideWidth = track.clientWidth;
+            track.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+        }
+
+        function moveSlide(direction) {
+            const slideWidth = track.clientWidth;
+            const currentIndex = Math.round(track.scrollLeft / slideWidth);
+            let nextIndex = currentIndex + direction;
+
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+
+            goToSlide(nextIndex);
+        }
+
+        track.addEventListener('scroll', () => {
+            const slideWidth = track.clientWidth;
+            const activeIndex = Math.round(track.scrollLeft / slideWidth);
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Vision Dataset — Project Detail</title>
+    <title>Industrial PPE Detection Dataset — Project Detail</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mobile.css" media="(max-width: 995px)" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -39,7 +39,15 @@
         .detail-container h1 {
             font-size: 3.6rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .detail-meta {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+        .detail-meta strong {
             color: #ffffff;
         }
         .detail-tags {
@@ -104,7 +112,10 @@
                 <i class="fa-solid fa-arrow-left"></i> Back to Projects
             </a>
 
-            <h1>Computer Vision Dataset</h1>
+            <h1>Industrial PPE & Attribute Detection Dataset</h1>
+            <p class="detail-meta">
+                <strong>Industrial Safety AI</strong> &nbsp;•&nbsp; GYS Steel Manufacturing Environment
+            </p>
 
             <div class="detail-tags">
                 <span class="kotakhtmlproject">CVAT</span>
@@ -112,21 +123,41 @@
                 <span class="kotakjsproject">Computer Vision</span>
             </div>
 
-            <img src="project3.jpeg" alt="Computer Vision Dataset Preview" class="detail-banner">
+            <img src="project3.jpeg" alt="PPE & Attribute Detector Training Workspace" class="detail-banner">
 
             <div class="detail-body">
-                <h3>Overview</h3>
-                <p>Pembuatan dan kurasi dataset gambar melalui proses pelabelan serta anotasi <em>bounding box</em> menggunakan CVAT (Computer Vision Annotation Tool) untuk melatih model Object Detection, khususnya deteksi atribut dan APD (PPE Detector).</p>
+                <h3>About The Project</h3>
+                <p>Heavy industrial environments such as steel manufacturing plants carry high operational risks where strict compliance with Personal Protective Equipment (PPE) protocols is critical. This project focuses on building a high-precision computer vision dataset tailored for the <strong>GYS Steel</strong> facility to automatically track and identify workers who are missing essential safety gear—such as safety helmets, reflective vests, and protective attributes—in real time.</p>
+                <p>Because industrial CCTV footage involves complex lighting, heavy machinery backgrounds, and varying camera angles, constructing a clean, domain-specific dataset was the foundational step to ensure reliable Object Detection model performance.</p>
 
-                <h3>Workflow & Key Activities</h3>
+                <h3>Goals</h3>
                 <ul>
-                    <li>Ekstraksi frame dari rekaman video dan seleksi data visual untuk memastikan variasi sudut serta pencahayaan.</li>
-                    <li>Pelabelan objek dan atribut secara presisi menggunakan <em>bounding box</em> di CVAT.</li>
-                    <li>Pengecekan kualitas anotasi (<em>quality control</em>) sebelum tahap augmentasi data dan pelatihan model deteksi objek.</li>
+                    <li>Detecting PPE compliance violations automatically (missing helmets, vests, and safety attributes) across active steel plant zones.</li>
+                    <li>Reducing reliance on manual CCTV monitoring by enabling automated safety alerts for Health, Safety, and Environment (HSE) teams.</li>
+                    <li>Building a well-balanced, accurately labeled training dataset capable of handling occlusions, low light, and industrial visual noise.</li>
                 </ul>
 
-                <h3>Impact</h3>
-                <p>Dataset terstruktur yang dihasilkan menjadi fondasi utama dalam meningkatkan akurasi model AI dalam mengenali kelengkapan alat pelindung diri di lingkungan kerja.</p>
+                <h3>The User & Audience</h3>
+                <p>The dataset and resulting detection pipeline are built to serve key operational teams within the steel manufacturing plant:</p>
+                <ul>
+                    <li><strong>HSE (Health, Safety & Environment) Officers:</strong> Safety supervisors who require real-time visibility into PPE compliance violations to prevent workplace accidents.</li>
+                    <li><strong>AI & Computer Vision Engineers:</strong> Model developers who rely on structured, consistent bounding-box ground truth data to train, validate, and fine-tune object detection architectures.</li>
+                </ul>
+
+                <h3>Dataset & Training Scope</h3>
+                <ul>
+                    <li><strong>Video-to-Frame Extraction:</strong> Selecting representative frames from raw GYS Steel surveillance footage across different shifts, worker postures, and camera perspectives.</li>
+                    <li><strong>Multi-Class Attribute Labeling:</strong> Performing precise bounding-box annotations in <strong>CVAT (Computer Vision Annotation Tool)</strong> to distinguish compliant gear (helmet, safety vest) from non-compliant instances (no-helmet, no-vest).</li>
+                    <li><strong>Data Augmentation & Pre-processing:</strong> Preparing annotated datasets for augmentation pipelines (brightness, scale, and orientation variations) to improve model generalization on unseen factory footage.</li>
+                </ul>
+
+                <h3>Process</h3>
+                <ul>
+                    <li><strong>Footage Selection & Frame Sampling:</strong> Filtered raw industrial video feeds to eliminate redundant frames while capturing edge cases such as partially occluded workers and harsh industrial lighting.</li>
+                    <li><strong>Annotation Guidelines & Labeling:</strong> Established strict bounding-box tightness and class-naming conventions inside CVAT to maintain labeling consistency across thousands of object instances.</li>
+                    <li><strong>Quality Assurance (QA) & Review:</strong> Audited annotated frames to fix mislabeled classes, overlapping boxes, or missed small-scale objects in distant camera views.</li>
+                    <li><strong>Dataset Export for Model Training:</strong> Structured and exported verified annotations into standard object detection formats ready for model training and evaluation.</li>
+                </ul>
             </div>
 
             <div class="detail-actions">
